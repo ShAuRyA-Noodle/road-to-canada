@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces Variable", Georgia, serif;
+  --font-sans: "Inter Variable", system-ui, sans-serif;
+
+  --color-bg: #fbf7f4;
+  --color-surface: #ffffff;
+  --color-ink: #2a1a22;
+  --color-muted: #7a6b72;
+  --color-line: #ece2e6;
+  --color-accent: #b23a5b;
+  --color-accent-soft: #f6e4ea;
+
+  --radius: 1rem;
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #17111a;
+  --color-surface: #211824;
+  --color-ink: #f3e9ee;
+  --color-muted: #b49fac;
+  --color-line: #33263094;
+  --color-accent: #e06c88;
+  --color-accent-soft: #2c1d27;
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-bg);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* warm romantic grain, fixed and non-interactive so it never repaints on scroll */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
