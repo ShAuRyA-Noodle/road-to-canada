@@ -7,5 +7,4 @@
 |----|------|---|-------|------|
 | #1264 | 1:17 AM | ✓ | Nav & Footer Taglines Updated to Canada/French/PR Messaging | ~249 |
 | #1262 | 1:16 AM | ✓ | Hero Tagline & App Color Theme Updated for Canada Branding | ~308 |
-| #1261 | " | ✓ | Hero.tsx UI Text Updated: Germany → Canada, October 2027 → September 2028 | ~240 |
 </claude-mem-context>

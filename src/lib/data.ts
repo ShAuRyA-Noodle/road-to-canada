@@ -1,8 +1,8 @@
 // The single source of truth for the journey. Edit freely as the plan evolves.
-// Primary target: Canada CS master's, Fall (September) 2028 intake.
-// Change INTAKE to 2027-09-01 if you decide to go a year earlier.
+// Primary target: Canada CS master's, Fall (September) 2027 intake (earliest feasible).
+// French is NOT an admission gate (programs are English). French is the PR gate, later.
 
-export const INTAKE = new Date("2028-09-01T00:00:00");
+export const INTAKE = new Date("2027-09-01T00:00:00");
 export const JOURNEY_START = new Date("2026-06-05T00:00:00");
 
 export type Ritual = { id: string; label: string; target: string; accentHours: number };
@@ -110,18 +110,18 @@ export const CHECKLIST: CheckGroup[] = [
 export type Milestone = { when: string; title: string; detail: string };
 
 export const TIMELINE: Milestone[] = [
-  { when: "Jun 2026", title: "Ignition", detail: "IELTS prep. Start French toward NCLC 7. Begin DSA. Clean GitHub." },
-  { when: "Jul to Dec 2026", title: "Final semester", detail: "French intensive. Protect CGPA. Lock 2 LORs. Start WES ECA." },
-  { when: "Dec 2026", title: "Graduate", detail: "Collect official transcripts and degree certificate." },
-  { when: "Jan to Mar 2027", title: "Build the base", detail: "French B1 to B2. DSA + foundation courses. Draft SOPs." },
-  { when: "Apr to Aug 2027", title: "French test", detail: "Sit TEF or TCF Canada. Hit NCLC 7. Finalize the 11 universities." },
-  { when: "Sep 2027 to Feb 2028", title: "Applications", detail: "Apply to all 11. Deadlines cluster Dec 2027 to Feb 2028." },
-  { when: "Jan to Mar 2028", title: "Offers", detail: "Collect 3 to 4 admits. Pick Montreal for French + cost + PR." },
-  { when: "Apr to Jun 2028", title: "Permit", detail: "CAQ if Quebec. Proof of funds. Study permit + biometrics." },
-  { when: "Jul to Aug 2028", title: "Departure prep", detail: "Visa, flights, housing. Montreal rent is far kinder than Toronto." },
-  { when: "Sep 2028", title: "Canada", detail: "Arrive. Study, co-op, keep French alive, build network." },
-  { when: "2029 to 2030", title: "Graduate + PGWP", detail: "Apply 3-year PGWP. Land a skilled CS job (TEER 0 or 1)." },
-  { when: "2030 to 2031", title: "Permanent Residence", detail: "12 months work. French Express Entry draw (379 to 446). File PR." },
+  { when: "Jun 2026", title: "Ignition", detail: "IELTS prep. Start French. Begin DSA. Clean GitHub. Research the 11 unis." },
+  { when: "Jul to Oct 2026", title: "Final semester + prep", detail: "Protect CGPA. Lock 2 LORs. Start WES ECA. Draft SOPs. Start French." },
+  { when: "Oct to Dec 2026", title: "Applications open", detail: "Submit early. IELTS done. Apply with in-progress transcripts where allowed." },
+  { when: "Dec 2026", title: "Graduate", detail: "Final transcripts + degree certificate. Submit remaining applications." },
+  { when: "Dec 2026 to Mar 2027", title: "Deadlines", detail: "All 11 in (McGill 15 Jan, others Dec to Mar). Keep DSA + courses going." },
+  { when: "Mar to May 2027", title: "Offers", detail: "Collect 3 to 4 admits. Pick Montreal for French + cost + jobs." },
+  { when: "May to Jul 2027", title: "Permit", detail: "CAQ if Quebec. Proof of funds (CAD 22,895+). Study permit + biometrics." },
+  { when: "Jul to Aug 2027", title: "Departure prep", detail: "Visa, flights, housing. Montreal rent is far kinder than Toronto." },
+  { when: "Sep 2027", title: "Canada", detail: "Arrive. Study, co-op, build network. Keep French going for PR." },
+  { when: "2027 to 2028", title: "French for PR", detail: "Reach NCLC 7 on TEF or TCF. Plus 50 CRS, unlocks the 379 to 446 draws." },
+  { when: "2028 to 2029", title: "Graduate + PGWP", detail: "Apply 3-year PGWP. Land a skilled CS job (NOC TEER 0 or 1)." },
+  { when: "2029 to 2030", title: "Permanent Residence", detail: "12 months work. French Express Entry draw. File PR by PGWP year 2." },
 ];
 
 export const AFFIRMATIONS: string[] = [

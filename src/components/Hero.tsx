@@ -35,7 +35,7 @@ export function Hero() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="mb-5 text-sm font-medium uppercase tracking-[0.25em] text-[var(--color-accent)]"
           >
-            The road to September 2028
+            The road to September 2027
           </motion.p>
 
           <motion.h1
