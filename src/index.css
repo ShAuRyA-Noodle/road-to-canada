@@ -25,6 +25,12 @@
   --color-accent-soft: #2c1d1b;
 }
 
+/* per-country accent (Canada red, Australia green). Theme sets base, country overrides accent. */
+:root[data-country="canada"] { --color-accent: #c0392b; --color-accent-soft: #f8e3e0; }
+:root[data-country="australia"] { --color-accent: #0b7a3b; --color-accent-soft: #e2f3e8; }
+:root[data-theme="dark"][data-country="canada"] { --color-accent: #e8675a; --color-accent-soft: #2c1d1b; }
+:root[data-theme="dark"][data-country="australia"] { --color-accent: #4cc47f; --color-accent-soft: #10261a; }
+
 * {
   border-color: var(--color-line);
 }

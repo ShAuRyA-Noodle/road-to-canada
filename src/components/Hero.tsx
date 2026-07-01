@@ -1,11 +1,13 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { ArrowDown } from "@phosphor-icons/react";
-import { INTAKE, JOURNEY_START } from "../lib/data";
+import { useCountry } from "../lib/CountryContext";
 
-function useCountdown() {
+function useCountdown(intakeISO: string, startISO: string) {
   const now = Date.now();
-  const total = INTAKE.getTime() - JOURNEY_START.getTime();
-  const left = INTAKE.getTime() - now;
+  const intake = new Date(intakeISO).getTime();
+  const start = new Date(startISO).getTime();
+  const total = intake - start;
+  const left = intake - now;
   const days = Math.max(0, Math.ceil(left / 86_400_000));
   const progress = Math.min(1, Math.max(0, 1 - left / total));
   return { days, progress };
@@ -13,7 +15,8 @@ function useCountdown() {
 
 export function Hero() {
   const reduce = useReducedMotion();
-  const { days, progress } = useCountdown();
+  const { country } = useCountry();
+  const { days, progress } = useCountdown(country.intake, country.journeyStart);
   const { scrollY } = useScroll();
   const glowY = useTransform(scrollY, [0, 600], [0, 120]);
 
@@ -30,15 +33,17 @@ export function Hero() {
       <div className="mx-auto grid w-full max-w-[1400px] items-end gap-12 md:grid-cols-[1.4fr_1fr]">
         <div>
           <motion.p
+            key={country.key + "-eyebrow"}
             initial={reduce ? false : { opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="mb-5 text-sm font-medium uppercase tracking-[0.25em] text-[var(--color-accent)]"
           >
-            The road to September 2027
+            {country.heroEyebrow}
           </motion.p>
 
           <motion.h1
+            key={country.key + "-title"}
             initial={reduce ? false : { opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
@@ -46,17 +51,17 @@ export function Hero() {
           >
             Shaurya goes
             <br />
-            to <span className="text-[var(--color-accent)]">Canada.</span>
+            to <span className="text-[var(--color-accent)]">{country.heroAccentWord}</span>
           </motion.h1>
 
           <motion.p
+            key={country.key + "-sub"}
             initial={reduce ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
             className="mt-6 max-w-md text-lg text-[var(--color-muted)]"
           >
-            One compass for the whole journey. Eleven universities, French as the
-            PR key, and a master's that opens permanent residence.
+            {country.heroSub}
           </motion.p>
 
           <motion.a
@@ -65,7 +70,7 @@ export function Hero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             whileTap={{ scale: 0.97 }}
-            className="mt-9 inline-flex items-center gap-2 rounded-full bg-[var(--color-accent)] px-7 py-3.5 font-medium text-white shadow-lg shadow-[var(--color-accent)]/25 transition-transform hover:-translate-y-0.5"
+            className="mt-9 inline-flex items-center gap-2 rounded-full bg-[var(--color-accent)] px-7 py-3.5 font-medium text-white shadow-lg transition-transform hover:-translate-y-0.5"
           >
             Start today's ritual
             <ArrowDown weight="bold" size={18} />
@@ -102,7 +107,6 @@ function CountRing({ days, progress }: { days: number; progress: number }) {
             strokeWidth="10"
             strokeLinecap="round"
             strokeDasharray={C}
-            initial={{ strokeDashoffset: C }}
             animate={{ strokeDashoffset: C * (1 - progress) }}
             transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
           />

@@ -1,8 +1,9 @@
 import { motion, useReducedMotion } from "motion/react";
-import { AFFIRMATIONS } from "../lib/data";
+import { useCountry } from "../lib/CountryContext";
 
 export function Marquee() {
   const reduce = useReducedMotion();
+  const AFFIRMATIONS = useCountry().country.affirmations;
   const row = [...AFFIRMATIONS, ...AFFIRMATIONS];
 
   return (

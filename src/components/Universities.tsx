@@ -1,6 +1,7 @@
 import { CaretDown } from "@phosphor-icons/react";
-import { UNIVERSITIES, type UniStatus } from "../lib/data";
+import type { UniStatus } from "../lib/data";
 import { useLocalStorage } from "../lib/storage";
+import { useCountry } from "../lib/CountryContext";
 import { Reveal, SectionHead } from "./Reveal";
 
 const STATUSES: UniStatus[] = [
@@ -19,7 +20,9 @@ const TIER_COLOR: Record<string, string> = {
 };
 
 export function Universities() {
-  const [status, setStatus] = useLocalStorage<Record<string, UniStatus>>("rtg-unis", {});
+  const { key, country } = useCountry();
+  const UNIVERSITIES = country.universities;
+  const [status, setStatus] = useLocalStorage<Record<string, UniStatus>>(`rtg-unis-${key}`, {});
 
   const offers = Object.values(status).filter((s) => s === "Offer").length;
   const applied = Object.values(status).filter((s) =>

@@ -1,11 +1,13 @@
 import { motion } from "motion/react";
 import { Check } from "@phosphor-icons/react";
-import { CHECKLIST } from "../lib/data";
 import { useLocalStorage } from "../lib/storage";
+import { useCountry } from "../lib/CountryContext";
 import { Reveal, SectionHead } from "./Reveal";
 
 export function Checklist() {
-  const [done, setDone] = useLocalStorage<Record<string, boolean>>("rtg-checklist", {});
+  const { key, country } = useCountry();
+  const CHECKLIST = country.checklist;
+  const [done, setDone] = useLocalStorage<Record<string, boolean>>(`rtg-checklist-${key}`, {});
   const toggle = (id: string) => setDone((p) => ({ ...p, [id]: !p[id] }));
 
   return (

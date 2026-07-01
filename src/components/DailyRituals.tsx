@@ -1,12 +1,14 @@
 import { motion } from "motion/react";
 import { Check, Flame } from "@phosphor-icons/react";
-import { RITUALS } from "../lib/data";
 import { currentStreak, todayKey, useLocalStorage } from "../lib/storage";
+import { useCountry } from "../lib/CountryContext";
 import { Reveal, SectionHead } from "./Reveal";
 
 type Log = Record<string, string[]>; // dateKey -> ritual ids done
 
 export function DailyRituals() {
+  const { country } = useCountry();
+  const RITUALS = country.rituals;
   const [log, setLog] = useLocalStorage<Log>("rtg-rituals", {});
   const today = todayKey();
   const doneToday = log[today] ?? [];

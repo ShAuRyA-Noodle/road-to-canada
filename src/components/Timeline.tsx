@@ -1,7 +1,8 @@
-import { TIMELINE } from "../lib/data";
+import { useCountry } from "../lib/CountryContext";
 import { Reveal, SectionHead } from "./Reveal";
 
 export function Timeline() {
+  const TIMELINE = useCountry().country.timeline;
   return (
     <section id="timeline" className="border-t px-6 py-24 md:px-10">
       <div className="mx-auto max-w-[1400px]">
