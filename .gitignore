@@ -7,3 +7,9 @@ dist-ssr
 .env
 .env.*
 npm-debug.log*
+
+# build artifacts
+*.tsbuildinfo
+
+# local tooling context (claude-mem)
+CLAUDE.local.md
